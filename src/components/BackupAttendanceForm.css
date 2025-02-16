@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.backup-form-section {
+  background: white;
+  border: none;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.search-section {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  background: white;
+  color: #1e88e5;
+  transition: all 0.2s ease;
+}
+
+.search-input::placeholder {
+  color: #9e9e9e;
+}
+
+.teams-container {
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.teams-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.team-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.team-card:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+.team-card.selected {
+  border: 2px solid #1e88e5;
+  background: #f0f7ff;
+}
+
+.team-info h3 {
+  margin: 0;
+  color: #1e88e5;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.team-info p {
+  margin: 5px 0;
+  color: #1e88e5;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Toggle Switch Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #1e88e5;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Scrollbar Styles */
+.teams-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.teams-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.teams-container::-webkit-scrollbar-thumb {
+  background: #1e88e5;
+  border-radius: 4px;
+}
+
+.teams-container::-webkit-scrollbar-thumb:hover {
+  background: #1976d2;
+}
+
+/* Heading styles to match main page */
+.backup-form-section h1 {
+  font-family: 'Poppins', sans-serif;
+  color: #1e88e5;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Rest of the styles remain the same */
+
+.save-button-container {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.save-button {
+  background: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: auto;
+  min-width: 200px;
+}
+
+.save-button:hover {
+  background: #1976d2;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom dropdown styles */
+.search-controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  align-items: stretch;
+}
+
+.search-input {
+  flex: 3;
+  width: auto;
+  height: 48px;
+  padding: 0 20px;
+  background: #f8f9fa;
+  border: none;
+  border-radius: 12px;
+  color: #1e88e5;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #90caf9;
+  font-weight: 400;
+}
+
+.custom-dropdown {
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+  position: relative;
+}
+
+.dropdown-button {
+  width: 100%;
+  height: 48px;
+  padding: 0 20px;
+  background: #f8f9fa;
+  border: none;
+  border-radius: 12px;
+  color: #90caf9;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  outline: none;
+  text-transform: none;
+}
+
+.dropdown-button:after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #90caf9;
+  border-bottom: 2px solid #90caf9;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+  margin-right: 6px;
+}
+
+.dropdown-button.open:after {
+  transform: rotate(-135deg);
+}
+
+.dropdown-list {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 1000;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.dropdown-list.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  color: #90caf9;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.dropdown-item.selected {
+  color: #1e88e5;
+  font-weight: 600;
+} 
