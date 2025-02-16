@@ -1,6 +1,8 @@
 import axios from 'axios'
-// import dotenv from 'dotenv'
-// dotenv.config()
+
+
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+console.log("Backend URL:", backendUrl); 
 // let teamsDataStore = [
 //   {
 //     team_name: "Code Warriors",
@@ -63,7 +65,7 @@ export const getCompetitions = () => {
 };
 export const getTeamsData = async () => {
   try {
-    const response = await axios.get("http://localhost:5000/admin");
+    const response = await axios.get(`${backendUrl}/admin`);
     teamsDataStore = response.data; 
     return teamsDataStore;
   } catch (error) {

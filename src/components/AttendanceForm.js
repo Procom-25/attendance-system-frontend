@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./AttendanceForm.css";
 import axios from "axios";
-// import dotenv from 'dotenv'
 
-// dotenv.config()
+
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+console.log("Backend URL:", backendUrl); 
+
 const AttendanceForm = () => {
   const [code, setCode] = useState("");
   const [error, setError] = useState(null);
@@ -37,16 +39,18 @@ const AttendanceForm = () => {
       console.log("Submitted code:", code);
       console.log("Location:", location);
 
-      const response = await axios.post("http://localhost:5000/user/verify", {
+      const response = await axios.post(`${backendUrl}/user/verify`, {
         teamcode: code,
         longitude: location.longitude,
         latitude: location.latitude,
       });
 
+      console.log("✅ Connection successful:", response.data);
       alert(response.data.message);
       setError("");
       setCode("");
     } catch (err) {
+      console.error("❌ Error submitting data:", err.response ? err.response.data : err.message);
       setError("Error submitting data: " + err.message);
       setCode("");
     }

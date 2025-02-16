@@ -3,6 +3,11 @@ import "./BackupAttendanceForm.css";
 import { getTeamsData, updateTeamData, getCompetitions } from "../data/Data";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+console.log("Backend URL:", backendUrl); 
+
 const BackupAttendanceForm = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
@@ -98,7 +103,7 @@ const BackupAttendanceForm = () => {
   const handleSave = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/admin/attendance",
+        `${backendUrl}/admin/attendance`,
         updatedTeams
       );
       alert(response.data.message || "Attendance changes saved successfully!");
