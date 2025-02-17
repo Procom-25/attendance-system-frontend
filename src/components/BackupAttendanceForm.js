@@ -19,17 +19,22 @@ const BackupAttendanceForm = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [updatedTeams, setUpdatedTeams] = useState([]);
+  const [teamsLoaded, setTeamsLoaded] = useState(false);
   useEffect(() => {
     const fetchTeams = async () => {
       const data = await getTeamsData();
       setTeams(Array.isArray(data) ? data : []);
+      setTeamsLoaded(true);
     };
     fetchTeams();
   }, []);
   useEffect(() => {
-    const data = getCompetitions();
-    setCompetitions(Array.isArray(data) ? data : []);
-  }, []);
+    if (teamsLoaded) { 
+      const data = getCompetitions();
+      console.log(data);
+      setCompetitions(Array.isArray(data) ? data : []);
+    }
+  }, [teamsLoaded]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
