@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 
-const backendUrl = process.env.REACT_APP_BACKEND_URL;
+const backendUrl = 'https://attendance-backend-lac.vercel.app/';
 console.log("Backend URL:", backendUrl); 
 // let teamsDataStore = [
 //   {
