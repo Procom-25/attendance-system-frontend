@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import "./AttendanceForm.css";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
-
-const backendUrl = 'https://attendance-backend-lac.vercel.app';
-console.log("Backend URL:", backendUrl); 
+const backendUrl = "https://attendance-backend-lac.vercel.app";
+console.log("Backend URL:", backendUrl);
 
 const AttendanceForm = () => {
   const [code, setCode] = useState("");
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const getLocation = () => {
     return new Promise((resolve, reject) => {
@@ -27,13 +30,15 @@ const AttendanceForm = () => {
         );
       } else {
         setError("Geolocation is not supported by your browser");
+        toast.error("Geolocation is not supported by your browser");
       }
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    setIsLoading(true);
+
     try {
       const location = await getLocation();
       console.log("Submitted code:", code);
@@ -46,13 +51,19 @@ const AttendanceForm = () => {
       });
 
       console.log("✅ Connection successful:", response.data);
-      alert(response.data.message);
+      toast.success("Attendance Marked Successfully");
       setError("");
       setCode("");
+      navigate("/");
     } catch (err) {
-      console.error("❌ Error submitting data:", err.response ? err.response.data : err.message);
+      console.error(
+        "❌ Error submitting data:",
+        err.response ? err.response.data : err.message
+      );
       setError("Error submitting data: " + err.message);
-      setCode("");
+      toast.error(`Error in Marking Attendance: ${err.message}`);
+    } finally {
+      setIsLoading(false); // Stop loading
     }
   };
 
@@ -67,10 +78,12 @@ const AttendanceForm = () => {
             placeholder="Enter code here"
             value={code}
             onChange={(e) => setCode(e.target.value)}
+            disabled={isLoading} // Disable input while loading
           />
-          <button type="submit">SUBMIT</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Submitting..." : "SUBMIT"}
+          </button>
         </form>
-        {error && <p style={{ color: "red" }}>{error}</p>}
       </div>
       <div className="help-button">
         <button className="help-icon">?</button>

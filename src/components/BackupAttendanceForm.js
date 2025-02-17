@@ -3,7 +3,7 @@ import "./BackupAttendanceForm.css";
 import { getTeamsData, updateTeamData, getCompetitions } from "../data/Data";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import toast from "react-hot-toast";
 
 const backendUrl = 'https://attendance-backend-lac.vercel.app';
 console.log("Backend URL:", backendUrl); 
@@ -111,12 +111,12 @@ const BackupAttendanceForm = () => {
         `${backendUrl}/admin/attendance`,
         updatedTeams
       );
-      alert(response.data.message || "Attendance changes saved successfully!");
+     toast.success('Attendance Marked Successfully !')
       setHasChanges(false);
       navigate("/backup/8f3da5b1e6c4d2a9");
     } catch (error) {
       console.error("Error in Marking Attendance", error);
-      alert("Failed to save attendance: " + error.message);
+      toast.error(`Error in Marking Attendance ${error.message}`)
     }
   };
 
