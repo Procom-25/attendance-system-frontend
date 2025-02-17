@@ -1,0 +1,10 @@
+.left-aligned {
+    text-align: left;
+    margin-left: 20px;
+  }
+  
+  .left-aligned h1, .left-aligned h2, .left-aligned p, .left-aligned pre {
+    margin: 0;
+    padding: 10px 0;
+  }
+  

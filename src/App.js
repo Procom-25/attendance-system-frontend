@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AttendanceForm from './components/AttendanceForm';
 import BackupAttendanceForm from './components/BackupAttendanceForm';
+import TestComponent from './components/TestComponent';
 import './App.css';
 
 // Unique hashed endpoint for backup form
@@ -16,6 +17,7 @@ function App() {
           <Route path={`/backup/${BACKUP_HASH}`} element={<BackupAttendanceForm />} />
           {/* Redirect any /backup attempts without hash */}
           <Route path="/backup" element={<Navigate to="/" replace />} />
+          <Route path="/test4594/:id" element={<TestComponent />} />
         </Routes>
       </div>
     </Router>
