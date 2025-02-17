@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 
-const backendUrl = 'https://attendance-backend-lac.vercel.app/';
+const backendUrl = 'https://attendance-backend-lac.vercel.app';
 console.log("Backend URL:", backendUrl); 
 
 const BackupAttendanceForm = () => {

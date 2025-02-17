@@ -3,7 +3,7 @@ import "./AttendanceForm.css";
 import axios from "axios";
 
 
-const backendUrl = 'https://attendance-backend-lac.vercel.app/';
+const backendUrl = 'https://attendance-backend-lac.vercel.app';
 console.log("Backend URL:", backendUrl); 
 
 const AttendanceForm = () => {

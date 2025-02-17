@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './TestComponent.css';
 
-const backendUrl = 'https://attendance-backend-lac.vercel.app/';
+const backendUrl = 'https://attendance-backend-lac.vercel.app';
 console.log("Backend URL:", backendUrl);
 
 const TestComponent = () => {
